@@ -55,7 +55,7 @@ public class TestPlanetConstructor {
 
         String imgFileName = "jupiter.gif";
 
-        /* uncomment when ready
+
         Planet p = new Planet(xxPos, yyPos, xxVel, yyVel, mass, imgFileName);
 
         checkEquals(xxPos, p.myXPos, "x");
@@ -74,7 +74,7 @@ public class TestPlanetConstructor {
         checkStringEquals(p.myFileName, pCopy.myFileName, "path to image");
 
 
-         */
+
 
     }
 }
