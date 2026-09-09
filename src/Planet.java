@@ -23,4 +23,9 @@ public class Planet {
         myMass = p.myMass;
         myFileName = p.myFileName;
     }
+
+    public double calcDistance(Planet p) {
+        double distance = Math.sqrt(Math.pow(myXPos-p.myXPos,2)+Math.pow(myYPos-p.myYPos,2));
+        return distance;
+    }
 }
