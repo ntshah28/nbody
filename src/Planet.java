@@ -36,4 +36,49 @@ public class Planet {
         double dist = this.calcDistance(p);
         return (gravity*mass1*mass2)/(Math.pow(dist,2));
     }
+
+    public double calcForceExertedByX(Planet p) {
+        return calcForceExertedBy(p) * (p.myXPos - this.myXPos) / p.calcDistance(this);
+    }
+    public double calcForceExertedByY(Planet p) {
+        return calcForceExertedBy(p) * (p.myYPos - this.myYPos) / p.calcDistance(this);
+    }
+
+    public double calcNetForceExertedByX(Planet[] ps) {
+        double sum=0.0;
+        for(Planet p : ps) {
+            if(!p.equals(this)) {
+                sum += calcForceExertedByX(p);
+            }
+        }
+        return sum;
+    }
+    public double calcNetForceExertedByY(Planet[] ps) {
+        double sum=0.0;
+        for(Planet p : ps) {
+            if(!p.equals(this)) {
+                sum += calcForceExertedByY(p);
+            }
+        }
+        return sum;
+    }
+
+    public void update(double seconds, double xforce, double yforce) {
+        double accelx = xforce/myMass;
+        double accely = yforce/myMass;
+
+        double vnewx = myXVel+seconds*accelx;
+        double vnewy = myYVel+seconds*accely;
+
+        double pnewx = myXPos + seconds*vnewx;
+        double pnewy = myYPos + seconds*vnewy;
+
+        myXVel = vnewx;
+        myYVel = vnewy;
+
+        myXPos = pnewx;
+        myYPos = pnewy;
+
+
+    }
 }
