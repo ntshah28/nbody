@@ -28,4 +28,12 @@ public class Planet {
         double distance = Math.sqrt(Math.pow(myXPos-p.myXPos,2)+Math.pow(myYPos-p.myYPos,2));
         return distance;
     }
+
+    public double calcForceExertedBy(Planet p) {
+        double gravity = 6.67*Math.pow(10,-11);
+        double mass1 = this.myMass;
+        double mass2 = p.myMass;
+        double dist = this.calcDistance(p);
+        return (gravity*mass1*mass2)/(Math.pow(dist,2));
+    }
 }
