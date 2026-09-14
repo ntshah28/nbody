@@ -81,4 +81,8 @@ public class Planet {
 
 
     }
+
+    public void draw () {
+        StdDraw.picture(myXPos, myYPos, "images/"+myFileName);
+    }
 }

@@ -75,9 +75,32 @@ public class NBody {
 
         StdDraw.setScale(-radius, radius);
         StdDraw.picture(0, 0, "images/starfield.jpg");
-
+        for (int i = 0; i < planets.length; i++) {
+            planets[i].draw();
+        }
         for (double t = 0.0; t < totalTime; t += dt) {
+            double[] xForces = new double[planets.length];
+            double[] yForces = new double[planets.length];
+            for(int i = 0; i < planets.length; i++) {
+                xForces[i] = planets[i].calcNetForceExertedByX(planets);
+                yForces[i] = planets[i].calcNetForceExertedByY(planets);
+            }
+            for(int i = 0; i < planets.length; i++) {
+                planets[i].update(dt,xForces[i],yForces[i]);
+            }
+            StdDraw.picture(0, 0, "images/starfield.jpg");
+            for(int i = 0; i < planets.length; i++) {
+                planets[i].draw();
+            }
+            StdDraw.show(10);
 
+        }
+        System.out.println("After sim:");
+        for (int i = 0; i < planets.length; i++) {
+            System.out.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
+                    planets[i].myXPos, planets[i].myYPos,
+                    planets[i].myXVel, planets[i].myYVel,
+                    planets[i].myMass, planets[i].myFileName);
         }
 
 
