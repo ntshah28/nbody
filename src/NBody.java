@@ -95,6 +95,7 @@ public class NBody {
             StdDraw.show(10);
 
         }
+        //676767676767
         System.out.println("After sim:");
         for (int i = 0; i < planets.length; i++) {
             System.out.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
